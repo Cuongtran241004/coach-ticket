@@ -1,10 +1,15 @@
 const express = require("express");
 const path = require("path");
 const { sequelize } = require("./models/");
+const Fingerprint = require("express-fingerprint");
 const { log } = require("console");
 const { rootRouter } = require("./routers/index");
 const app = express();
 const PORT = 3000;
+
+// Sử dụng fingerprint
+app.use(Fingerprint());
+
 // Cài đặt ứng dụng kiểu json
 app.use(express.json());
 

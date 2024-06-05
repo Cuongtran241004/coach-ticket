@@ -182,3 +182,7 @@ static associate({ Station }) {
 ```
 
 Sau đó chạy các lệnh `yarn sequelize-cli db:migrate:undo`, `yarn sequelize-cli db:migrate` để refresh lại database
+
+![Fingerprint](image-7.png)
+Cài đặt: `yarn add express-fingerprint`
+Tham khảo: [Link](https://www.npmjs.com/package/express-fingerprint)
