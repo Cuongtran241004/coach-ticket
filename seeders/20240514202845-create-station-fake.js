@@ -25,6 +25,30 @@ module.exports = {
         {
           name: "Bến xe Thành Bưởi",
           address: "Nguyễn Văn Linh, Quận 1",
+          province: "Long An",
+          createdAt: "2024-04-15 03:32:00",
+          updatedAt: "2024-05-15 04:35:00",
+        },
+
+        {
+          name: "Bến xe Miền Tây",
+          address: "Nguyễn Văn Linh, Quận 1",
+          province: "Tây Ninh",
+          createdAt: "2024-04-15 03:32:00",
+          updatedAt: "2024-05-15 04:35:00",
+        },
+
+        {
+          name: "Bến xe Miền Đông",
+          address: "Nguyễn Văn Linh, Quận 1",
+          province: "Đồng Nai",
+          createdAt: "2024-04-15 03:32:00",
+          updatedAt: "2024-05-15 04:35:00",
+        },
+
+        {
+          name: "Bến xe Cần Thơ",
+          address: "Nguyễn Văn Linh, Quận 1",
           province: "Cần Thơ",
           createdAt: "2024-04-15 03:32:00",
           updatedAt: "2024-05-15 04:35:00",

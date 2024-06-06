@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { User } = require("../models");
+const { User, sequelize } = require("../models");
 const { where } = require("sequelize");
 const gravatar = require("gravatar");
 
@@ -74,8 +74,24 @@ const uploadAvatar = async (req, res) => {
   await userfound.save();
   res.send(userfound);
 };
+
+const getAllTrip = async (req, res) => {
+  try {
+    const [result, metadata] = await sequelize.query(`
+  select users.name as username, fromSta.name as fromStation, toSta.name as toStation from users
+  inner join tickets on users.id = tickets.user_id
+  inner join trips on trips.id = tickets.trip_id
+  inner join stations as fromSta on fromSta.id = trips.fromStation
+  inner join stations as toSta on toSta.id = trips.toStation;
+    `);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
 module.exports = {
   register,
   login,
   uploadAvatar,
+  getAllTrip,
 };

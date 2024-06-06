@@ -186,3 +186,34 @@ Sau đó chạy các lệnh `yarn sequelize-cli db:migrate:undo`, `yarn sequeliz
 ![Fingerprint](image-7.png)
 Cài đặt: `yarn add express-fingerprint`
 Tham khảo: [Link](https://www.npmjs.com/package/express-fingerprint)
+
+# Tạo model Tickets
+
+Chạy lệnh: `yarn sequelize-cli model:generate --name Ticket --attributes id:integer`
+
+# tạo dữ liệu giả để test
+
+Chạy lệnh:
+
+- `yarn sequelize-cli seed:generate --name create-fake-trips`
+- `yarn sequelize-cli seed:generate --name create-fake-tickets`
+- `yarn sequelize-cli seed:generate --name create-fake-users`
+
+# Chạy lệnh sql bên trong nodejs
+
+Ở file models->index.js chúng ta đã sử dụng `db.sequelize`
+Nên ý tưởng là mình sẽ làm tương tự cho bên `user.controller.js`
+Tạo hàm lấy toàn bộ trips:
+
+```
+const getAllTrip = async (req, res) => {
+  const [result, metadata] = await sequelize.query(`
+select users.name as username, fromSta.name as fromStation, toSta.name as toStation from users
+inner join tickets on users.id = tickets.user_id
+inner join trips on trips.id = tickets.trip_id
+inner join stations as fromSta on fromSta.id = trips.fromStation
+inner join stations as toSta on toSta.id = trips.toStation;
+  `);
+  res.status(200).send(result);
+};
+```

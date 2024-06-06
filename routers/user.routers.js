@@ -5,6 +5,7 @@ const {
   register,
   login,
   uploadAvatar,
+  getAllTrip,
 } = require("../controllers/user.controllers");
 const userRouter = express.Router();
 
@@ -16,6 +17,7 @@ userRouter.post(
   uploadImage("user"),
   uploadAvatar
 );
+userRouter.get("/all-trip", getAllTrip);
 
 module.exports = {
   userRouter,
